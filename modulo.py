@@ -1,49 +1,41 @@
-import os
+# importa função de data
+from datetime import date
 
+# função exibir o menu
+def exibir_menu():
+    dia = date.today().day
+    mes = date.today().month
+    ano = date.today().year
 
-def menu_pessoa():
-    print("DIGITE A OPÇÃO ESCOLHIDA")
-    print("1 - Cadastrar nome")
-    print("2 - Deletar nome")
-    print("3 - Entrar no aplicativo")
+    print(f'\n{'=' * 20} BANCO ANACONDA | {dia}/{mes}/{ano} {'=' * 20}\n')
+    print('1 - Criar conta')
+    print('2 - Entrar na conta')
+    print('3 - Exibir correntistas')
+    print('4 - Excluir conta')
+    print('5 - Encerrar programa')
 
+# função exibir operações
+def exibir_operacoes():
+    print('\nOPERAÇÕES\n')
+    print('1 - Consultar saldo')
+    print('2 - Depositar valor')
+    print('3 - Sacar valor')
+    print('4 - Voltar')
 
-def cadastrar(pessoas, carteira, nome):
-    os.system('cls')
-    carteira['nome'] = nome
-    carteira['saldo'] = 0.00
-    if carteira not in pessoas:
-        pessoas.append(carteira)
-        print(f" conta de {nome} adicionada")
-    else:
-        print("Ésta pessoa já possui uma carteira ")
+# função exibir dados do correntista
+def exibir_dados(nome, i, saldo):
+    print(f'ID: {i}')
+    print(f'Nome: {nome}')
+    print(f'Agência: 1001')
+    print(f'Conta: 1001{i}')
+    print(f'Saldo: R$ {saldo}')
 
+# função de depósito
+def depositar_valor(saldo, valor):
+    saldo += valor
+    return saldo
 
-def deletar(pessoas, nome):
-    os.system('cls')
-    for pessoa in pessoas[:]:
-        if pessoa.get('nome') == nome:
-            pessoas.remove(pessoa)
-            print(f"cadastro de {nome} removido")
-            break
-        else:
-            print("o nome nao esta na lista")
-            continue
-
-
-def login(pessoas, nome):
-    for pessoa in pessoas[:]:
-        if pessoa.get('nome') == nome:
-            print(f"usuario logado como {nome}")
-            return True
-        else:
-            print("Usuario não cadastrado")
-            return False
-
-
-def menu_carteira():
-    os.system('cls')
-    print("DIGITE A OPÇÃO ESCOLHIDA")
-    print("1 - Consultar saldo")
-    print("2 - Depositar valor")
-    print("3 - Sacar valor")
+# função de saque
+def sacar_valor(saldo, valor):
+    saldo -= valor
+    return saldo
