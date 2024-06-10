@@ -1,3 +1,6 @@
+import os
+
+
 def menu_pessoa():
     print("DIGITE A OPÇÃO ESCOLHIDA")
     print("1 - Cadastrar nome")
@@ -6,6 +9,7 @@ def menu_pessoa():
 
 
 def cadastrar(pessoas, carteira, nome):
+    os.system('cls')
     carteira['nome'] = nome
     carteira['saldo'] = 0.00
     if carteira not in pessoas:
@@ -15,10 +19,11 @@ def cadastrar(pessoas, carteira, nome):
         print("Ésta pessoa já possui uma carteira ")
 
 
-def deletar(pessoas, carteira, nome):
+def deletar(pessoas, nome):
+    os.system('cls')
     for pessoa in pessoas[:]:
         if pessoa.get('nome') == nome:
-            carteira.remove(pessoa)
+            pessoas.remove(pessoa)
             print(f"cadastro de {nome} removido")
             break
         else:
@@ -34,3 +39,11 @@ def login(pessoas, nome):
         else:
             print("Usuario não cadastrado")
             return False
+
+
+def menu_carteira():
+    os.system('cls')
+    print("DIGITE A OPÇÃO ESCOLHIDA")
+    print("1 - Consultar saldo")
+    print("2 - Depositar valor")
+    print("3 - Sacar valor")
